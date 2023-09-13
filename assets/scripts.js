@@ -1,0 +1,1 @@
+const weatherApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=$8db965459e689988c56f9bc2eafac014`;
