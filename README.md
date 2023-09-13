@@ -26,6 +26,6 @@ MIT
 
 <a href="mailto:sweet.victoria1218@gmail.com">Email Me</a>
 
-<a href="https://victoriasweet.github.io/supreme-garbanzo/Develop/">Link to deployed URL</a>
+<a href="https://victoriasweet.github.io/supreme-garbanzo">Link to deployed URL</a>
 
 ![screenshot of deployed URL](./screenshot.png?raw=true "Screenshot of deployed URL")
