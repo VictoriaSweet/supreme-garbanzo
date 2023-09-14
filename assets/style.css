@@ -9,3 +9,18 @@ border:20px;
 height: auto;
 width: auto; 
 }
+
+#forecastContainer { 
+    display:flex; 
+    border: solid;
+    width:700px;
+}
+
+.searchContainer { 
+    border:solid; 
+    height:700px;
+    width: 1000px;
+    display: flex; 
+    justify-content: end;
+
+}
