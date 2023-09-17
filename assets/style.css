@@ -45,3 +45,7 @@ width: auto;
 #dayCard-5 { 
     border:solid orange 15px;
 }
+
+.weatherIcon { 
+    border: solid pink 20px;
+}

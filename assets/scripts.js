@@ -4,7 +4,7 @@ const apiKey = "8db965459e689988c56f9bc2eafac014";
 const city = "Austin";
 const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
 const weatherData = url;
-let forecastContainer = document.querySelector("#forecastContainer");
+
 
 // GIVEN a weather dashboard with form inputs
 
@@ -40,20 +40,51 @@ fetch(url).then(function (response) {
   // response is going to be a json string
   // parse the json
   response.json().then(function (weatherData) {
-    for (let index = 0; index < weatherData.list.length; index++) {
-      let element = weatherData.list[index];
-      console.log(element);
-    }
-//setting innerText of dayCard 
-    for (let index = 0; index < 5; index++) {
-    let dayCard = document.querySelector(`#dayCard-${index + 1}`);
-    let p = dayCard.children[2];
-     p.innerText = weatherData.list[index].main.temp;
-let dayOfWeek = dayCard.children[0];
-let month = dayCard.children[1];
+    let next5Days = [weatherData.list[0]];
 
-let date = new Date(weatherData.list[index].dt_txt);
-month.innerText = date ; 
+    let previousDate = new Date(weatherData.list[0].dt_txt);
+    previousDate.setHours(0, 0, 0, 0);
+    for (let index = 0; index < weatherData.list.length; index++) {
+      let day = weatherData.list[index];
+      let date = new Date(day.dt_txt);
+      let hour = date.getHours();
+      date.setHours(0, 0, 0, 0);
+
+      // check the next day and see if the date changed
+      if (previousDate < date && hour == 9) {
+        previousDate = date;
+        next5Days.push(day);
+      }
+      // if so add it to next5Days, and update previousDate
+    }
+
+    // setting data from each day of dayCard
+    for (let index = 0; index < next5Days.length; index++) {
+      let day = next5Days[index];
+      let dayCard = document.querySelector(`#dayCard-${index + 1}`);
+      let p = dayCard.children[2];
+      p.innerText = day.main.temp;
+      let dayOfWeek = dayCard.children[0];
+      let month = dayCard.children[1];
+      console.log(day.main);
+      let date = new Date(day.dt_txt);
+      //setting view of of data in card
+      dayOfWeek.innerText = date.toLocaleDateString("en-us", {
+        weekday:"long"});
+      month.innerText = date.toLocaleDateString("en-us", {
+        month: "short",
+        day:"numeric",
+        hour: "numeric",
+        year:"numeric",
+        
+      });
+      var iconurl = "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png";
+  weatherIcon = dayCard.children[3];
+  weatherIcon.setAttribute("src",iconurl);
+ 
+     
+      console.log(weatherIcon);
+     
     }
   });
 });
