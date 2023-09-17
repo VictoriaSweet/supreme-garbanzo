@@ -13,14 +13,35 @@ width: auto;
 #forecastContainer { 
     display:flex; 
     border: solid;
-    width:700px;
+    width:auto;
+    height:500px;
 }
 
 .searchContainer { 
-    border:solid; 
-    height:700px;
-    width: 1000px;
+    border:solid grey 15px; 
+    height:auto;
+    width: auto;
     display: flex; 
     justify-content: end;
 
+}
+
+#dayCard-1 { 
+    border:solid red 15px;
+}
+
+#dayCard-2 { 
+    border:solid blue 15px;
+}
+
+#dayCard-3 { 
+    border:solid purple 15px;
+}
+
+#dayCard-4 { 
+    border:solid green 15px;
+}
+
+#dayCard-5 { 
+    border:solid orange 15px;
 }
